@@ -1,0 +1,34 @@
+{
+  "name": "w3c-chrome-plugin",
+  "version": "1.0.0",
+  "description": "Run the W3C validation tool against the page you are currently on",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha test/.setup.js test/**/*.js",
+    "bundle": "webpack --progress --colors",
+    "watch": "webpack --progress --colors --watch"
+  },
+  "author": "Matthew Burrows <mattjburrows@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "react-addons-test-utils": "^15.1.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.0.0",
+    "jsdom": "^8.0.1",
+    "mocha": "^2.4.5",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

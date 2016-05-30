@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "w3c validation plugin",
+  "description": "Run the w3c validation tool against the page you are currently on",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "tabs",
+    "currentTab",
+    "activeTab",
+    "selectedTab",
+    "https://ajax.googleapis.com/"
+  ],
+  "web_accessible_resources": ["https://fb.me/react-15.1.0.min.js", "https://fb.me/react-dom-15.1.0.min.js"]
+}
