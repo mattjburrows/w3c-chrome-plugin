@@ -10,50 +10,45 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      currentTab: '',
-      urlToValidate: '',
-      title: 'w3c validation',
+      url: '',
+      title: 'W3C Validation',
       messages: [],
       incWarnings: true
     };
 
     getSelectedTab()
-      .then((url) => {
-        const currentTab = url;
-        this.setState({ currentTab });
-      });
+      .then((url) => this.setState({ url }));
   }
 
   fetchValidationData(formData) {
     const url = formData.url;
     const incWarnings = (formData.incWarnings === 'yes');
 
-    this.setState({ incWarnings });
+    this.setState({ url, incWarnings });
+    fetchw3cData(url).then((json) => {
+      const title = `Validation results: ${url}`;
+      const messages = json.messages;
 
-    fetchw3cData(url)
-      .then((json) => {
-        const title = `Validation results: ${url}`;
-        const messages = json.messages;
-        this.setState({ title, messages });
-      });
+      this.setState({ title, messages });
+    });
   }
 
   renderFormView() {
     return (
-      <ValidationForm onSubmit={this.fetchValidationData.bind(this)} currentTab={this.state.currentTab} />
+      <ValidationForm url={ this.state.url } onSubmit={ this.fetchValidationData.bind(this) } />
     );
   }
 
   renderResultsListView() {
     return (
-      <Table items={this.state.messages} />
+      <Table items={ this.state.messages } incWarnings={ this.state.incWarnings } />
     );
   }
 
   render() {
     return (
       <div>
-        <Title title={this.state.title} />
+        <Title title={ this.state.title } />
         { (this.state.messages.length < 1) ? this.renderFormView() : this.renderResultsListView() }
       </div>
     )
