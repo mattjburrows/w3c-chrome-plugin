@@ -1,7 +1,7 @@
 export default () => {
   return new Promise((resolve, reject) => {
     if (!chrome.tabs) {
-      resolve('http://www.bbc.co.uk/iplayer');
+      resolve('');
     } else {
       chrome.tabs.getSelected((tab) => resolve(tab.url));
     }
